@@ -21,6 +21,9 @@ import static java.lang.System.out;
 
 @WebServlet(name = "ProductServlet", value = "/products")
 public class ProductServlet extends HttpServlet {
+    public static final String CATEGORY_1 = "1";
+    public static final String CATEGORY_2 = "2";
+    public static final String CATEGORY_3 = "3";
     ProductDAO productDAO = new ProductDAO();
     public static final int TOTAL_PER_PAGE = 6;
 
@@ -79,7 +82,6 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showListProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String search = request.getParameter("search");
         List<Product> productList;
         if (search == null) {

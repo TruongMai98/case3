@@ -18,27 +18,47 @@
     <jsp:include page="/header/header.jsp"></jsp:include>
 </nav>
 
-<section>
+<section class="sticky-top">
     <jsp:include page="/search/search.jsp"></jsp:include>
 </section>
 <section class="container-sm">
-    <div class="card-header my-3">All Products</div>
     <div class="row">
-        <c:forEach items="${requestScope['products']}" var="product">
-            <div class="card col-3 my-1 mx-5">
-                <img src="${product.getImage()}" class="card-img-top " alt="...">
-                <div class="card-body">
-                    <a href="/customers?action=view&id=${product.getId()}" class="text-success opacity-100 text-decoration-none">
-                        <h5 class="card-title ">${product.getName()}</h5>
-                    </a>
-                    <p class="card-text">${product.getDescription()}</p>
-                    <a href="#" class="btn btn-success opacity-75 ">Add to cart</a>
-                </div>
+        <div class="col-1 border border-2 rounded h-25 text-center sticky-top top-50">
+            <div>
+                <div class="text-success my-1">Sort by</div>
             </div>
-        </c:forEach>
+            <div>
+                <form action="" method="get">
+                    <input type="submit" value="Rau lá" name="sort1" class="btn btn-outline-success">
+                </form>
+            </div>
+            <div>
+                <form action="" method="get">
+                    <input type="submit" value="Củ quả" name="sort2" class="btn btn-outline-success">
+                </form>
+            </div>
+            <div>
+                <form action="" method="get">
+                    <input type="submit" value="Trái cây" name="sort3" class="btn btn-outline-success">
+                </form>
+            </div>
+        </div>
+        <div class="row col-11">
+            <c:forEach items="${requestScope['products']}" var="product">
+                <div class="card col-3 my-2 mx-5">
+                    <img src="${product.getImage()}" class="card-img-bottom " alt="...">
+                    <div class="card-body">
+                        <a href="/customers?action=view&id=${product.getId()}" class="text-success opacity-100 text-decoration-none">
+                            <h5 class="card-title ">${product.getName()}</h5>
+                        </a>
+                        <p class="card-text">${product.getDescription()}...</p>
+                        <a href="#" class="btn btn-success opacity-75">Add to cart</a>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 </section>
-
 
 <footer>
     <jsp:include page="/footer/footer.jsp"></jsp:include>

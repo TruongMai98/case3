@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-expand p-2 bg-success bg-opacity-75">
+<nav class="navbar navbar-expand p-2 bg-success bg-opacity-75 ">
     <div class="container-sm">
         <ul class="navbar-nav d-none d-md-flex mr-auto">
             <li class="nav-item">
@@ -22,7 +22,7 @@
             </li>
             <li>
                 <p></p>
-                <p class="text-uppercase">Mini shop</p>
+                <p class="text-uppercase text-dark">vegetable shop</p>
             </li>
         </ul>
         <ul class="navbar-nav d-flex align-items-center">

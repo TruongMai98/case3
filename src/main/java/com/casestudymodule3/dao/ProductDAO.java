@@ -1,6 +1,5 @@
 package com.casestudymodule3.dao;
 
-import com.casestudymodule3.model.Customer;
 import com.casestudymodule3.model.Product;
 
 import java.sql.*;
@@ -15,11 +14,12 @@ public class ProductDAO {
 
 
     private static final String SELECT_ALL_PRODUCT = "select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product;";
-    private static final String SEARCH_BY_ID = "select * from product where productid = ?";
+    private static final String SEARCH_BY_ID = "select * from product where productid = ?;";
     private static final String DELETE_PRODUCT = "delete from product where productid = ?;";
-    private static final String CREATE_PRODUCT = "insert into product(name, title, price, description, image, categoryId) values (?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_PRODUCT = "update product set name = ?,title= ?, price = ?, description = ?, image = ?, categoryId = ? where productid = ?";
+    private static final String CREATE_PRODUCT = "insert into product(name, title, price, description, image, categoryId) values (?, ?, ?, ?, ?, ?);";
+    private static final String UPDATE_PRODUCT = "update product set name = ?,title= ?, price = ?, description = ?, image = ?, categoryId = ? where productid = ?;";
     private static final String SEARCH_BY_NAME ="select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product where name like ? '%';";
+    public static final String SEARCH_BY_CATEGORY_ID = "select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product where categoryId = ?;";
 
     public ProductDAO() {
     }
@@ -137,13 +137,13 @@ public class ProductDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("productid");
-                String name1 = resultSet.getString("name");
+                name = resultSet.getString("name");
                 String image = resultSet.getString("image");
                 double price = resultSet.getDouble("price");
                 String title = resultSet.getString("title");
                 int categoryId = resultSet.getInt("categoryId");
                 String description = resultSet.getString("description");
-                product = new Product(id, name1, image, price, title, description, categoryId);
+                product = new Product(id, name, image, price, title, description, categoryId);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -152,5 +152,28 @@ public class ProductDAO {
         return products;
     }
 
+    public List<Product> searchByCategoryId(int categoryId) {
+        List<Product> products = new ArrayList<>();
+        Product product;
+        try (Connection connection = getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_BY_CATEGORY_ID)){
+            preparedStatement.setInt(1, categoryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("productid");
+                String name = resultSet.getString("name");
+                String image = resultSet.getString("image");
+                double price = resultSet.getDouble("price");
+                String title = resultSet.getString("title");
+                categoryId = resultSet.getInt("categoryId");
+                String description = resultSet.getString("description");
+                product = new Product(id, name, image, price, title, description, categoryId);
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
 }
 

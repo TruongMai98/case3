@@ -69,7 +69,7 @@
 </div>
 <div class="container-sm text-center">
     <c:forEach var="pageId" begin="1" end="${requestScope['totalPage']}">
-        <a href="/products?page=${pageId}">${pageId}</a>
+        <a href="/products?page=$ {pageId}">${pageId}</a>
     </c:forEach>
 </div>
 

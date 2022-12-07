@@ -1,30 +1,29 @@
 package com.casestudymodule3.model;
 
 import java.time.LocalDate;
-import java.util.Locale;
 
-public class Order {
-    private int orderId;
+public class Cart {
+    private int cartId;
     private int customerId;
-    private String date;
+    private LocalDate createDate;
     private boolean status;
 
-    public Order() {
+    public Cart() {
     }
 
-    public Order(int orderId, int customerId, String date, boolean status) {
-        this.orderId = orderId;
+    public Cart(int cartId, int customerId, LocalDate createDate, boolean status) {
+        this.cartId = cartId;
         this.customerId = customerId;
-        this.date = date;
+        this.createDate = createDate;
         this.status = status;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getCartId() {
+        return cartId;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
     public int getCustomerId() {
@@ -35,12 +34,12 @@ public class Order {
         this.customerId = customerId;
     }
 
-    public String getDate() {
-        return date;
+    public LocalDate getCreateDate() {
+        return createDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
     }
 
     public boolean isStatus() {
