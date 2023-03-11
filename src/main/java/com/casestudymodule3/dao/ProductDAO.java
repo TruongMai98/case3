@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
-    private static final String URL_CONNECTION = "jdbc:mysql://localhost:3306/casestudy";
+//    private static final String URL_CONNECTION = "jdbc:mysql://localhost:3306/casestudy";
+    private static final String URL_CONNECTION = "mysql://bdcfaa5d33ead7:6a0edec0@eu-cdbr-west-03.cleardb.net/heroku_531cd4f8c02cae4?reconnect=true";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String USER_NAME = "root";
-    private static final String PASSWORD = "admin";
+//    private static final String USER_NAME = "root";
+    private static final String USER_NAME = "bdcfaa5d33ead7";
+    private static final String PASSWORD = "6a0edec0";
+//    private static final String PASSWORD = "admin";
 
 
     private static final String SELECT_ALL_PRODUCT = "select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product;";
