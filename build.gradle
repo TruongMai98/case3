@@ -39,3 +39,6 @@ test {
 
 
 
+task stage {
+    dependsOn build
+}
