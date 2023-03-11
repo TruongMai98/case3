@@ -18,7 +18,7 @@ public class ProductDAO {
     private static final String DELETE_PRODUCT = "delete from product where productid = ?;";
     private static final String CREATE_PRODUCT = "insert into product(name, title, price, description, image, categoryId) values (?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_PRODUCT = "update product set name = ?,title= ?, price = ?, description = ?, image = ?, categoryId = ? where productid = ?;";
-    private static final String SEARCH_BY_NAME ="select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product where name like ? '%';";
+    private static final String SEARCH_BY_NAME ="select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product where name like '%' ? '%';";
     public static final String SEARCH_BY_CATEGORY_ID = "select productid, name, image, price, title, SUBSTRING(description, 1, 26) as description, categoryId from product where categoryId = ?;";
 
     public ProductDAO() {

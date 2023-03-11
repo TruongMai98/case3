@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div class="container-sm">
+<div class="container-sm my-3">
     <form action="" method="get">
         <table class="mx-auto w-75">
             <tr class="col-xxl-12">
@@ -69,7 +69,7 @@
 </div>
 <div class="container-sm text-center">
     <c:forEach var="pageId" begin="1" end="${requestScope['totalPage']}">
-        <a href="/products?page=$ {pageId}">${pageId}</a>
+        <a href="/products?page=${pageId}">${pageId}</a>
     </c:forEach>
 </div>
 
